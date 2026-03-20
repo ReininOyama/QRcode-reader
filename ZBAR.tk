@@ -1,0 +1,37 @@
+#!/usr/bin/wish
+#
+cd /tmp
+option add *font {FixedSys 14}
+wm title . "QRコードリーダー"
+wm geometry . "490x290+260+220"
+set message "ＱＲコードをクリップボードに読み込む"
+menu .m -type menubar
+. configure -menu .m
+menu .m.m1 -tearoff no
+.m add cascade -label "デバイス" -underline 0 -menu .m.m1
+set devices [exec ls /dev | grep "^video"]
+set d1 [split $devices "\n"]
+foreach dv $d1 {
+    .m.m1 add radiobutton -label "/dev/$dv" -variable device -value "/dev/$dv"
+}
+set device "/dev/video0"
+set url ""
+label .l1 -textvariable message
+entry .e1 -width 50 -relief sunken -bd 2 -textvariable url
+button .b1 -text "　読み込む　" -command q_read
+button .b2 -text "ブラウザ起動" -command url_open
+button .b3 -text " 　閉じる　 " -command "exit"
+pack .l1 .e1 .b1 .b2 .b3 -pady 5
+
+proc q_read {} {
+	global device
+	global url
+	set url [exec /usr/bin/zbarcam --raw 0 -1 --prescale=800x600 $device 2>&1]
+	exec printf "%s" ${url} | xclip -r -selection clipboard -i >/dev/null
+}
+proc url_open {} {
+	global url
+	if { ${url} != "" } {
+		set rr [exec /usr/bin/xdg-open ${url} >/dev/null 2>&1 &]
+	}
+}
