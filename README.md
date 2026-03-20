@@ -1,5 +1,5 @@
 # QRcode-reader
-GUI of QRcode reader use zbar-tools and tkinter or tcl/tk
+GUI of QRcode reader use zbar-tools and tkinter or tcl/tk<br>
 これは、zbar-tools を GUIで簡単に利用できる様にしたアプリケーションです。
 Tck/tkと、
 Python3 tkinterで、実装しました。
