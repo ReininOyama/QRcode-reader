@@ -8,11 +8,9 @@ xclip python3 python3-tk (python3-tkinter) tk<br>
 sudo apt update<br>
 sudo apt install xclip python3-tk tk<br>
 使い方<br>
-sudo -i<br>
-で、root になって<br>
-qrcode1.png を /usr/share/icons<br>
-qrcode1.desktop を /usr/share/applications<br>
-ZBAR を /usr/local/bin (Tcl/tk版が使いたい場合は ZBAR.tkを ZBARにリネームしてください)<br>
-に入れます。<br>
+sudo dpkg -i qrcodereader_1.0.0.deb<br>
+<br>
 これだけで、起動メニューから選択できます。<br>
 なお、認識できるカメラが接続されていないと何もしません。<br>
+/usr/bin/ZBARを
+ZBAR.th と交換すると Tcl/tk版になります。
