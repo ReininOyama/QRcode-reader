@@ -1,0 +1,11 @@
+Package: qrcodereader
+Priority: optional
+Section: main
+Maintainer: Reinin Oyama
+Architecture: all
+Version: 1.0.0
+Depends: zbar-tools, python3-tk
+Conflicts:
+Provides:
+Description: GUI to read QRcodes base zbar-tools and python3 tkinter
+ A Simple QRcode reader
